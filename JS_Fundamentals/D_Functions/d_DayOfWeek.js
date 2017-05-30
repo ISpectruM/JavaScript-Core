@@ -1,5 +1,4 @@
 function getDayOfWeek(string) {
-
     switch (string){
         case 'Monday':
             return 1;
@@ -19,3 +18,4 @@ function getDayOfWeek(string) {
             return'error';
     }
 }
+
