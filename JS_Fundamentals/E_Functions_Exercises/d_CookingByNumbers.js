@@ -27,4 +27,35 @@ function cook(data) {
     }
 }
 
+function cookingByNumbers(data) {
+    let[start,op1,op2,op3,op4,op5] = [Number(data[0]),data[1],data[2],data[3],data[4],data[5]];
+    let chop = (num) => num / 2;
+    let dice = (num) => Math.sqrt(num);
+    let spice = (num) => num + 1;
+    let bake = (num) => num * 3;
+    let fillet = (num) => num -(num*20)/100;
+
+    for (let operation of [op1, op2, op3, op4, op5]) {
+
+        switch (operation){
+            case 'chop':
+                start = chop(start);
+                break;
+            case 'dice':
+                start = dice(start);
+                break;
+            case 'spice':
+                start = spice(start);
+                break;
+            case 'bake':
+                start = bake(start);
+                break;
+            case 'fillet':
+                start = fillet(start);
+                break;
+        }
+        console.log(start);
+    }
+}
+
 cook(['9', 'dice', 'spice', 'chop', 'bake', 'fillet']);

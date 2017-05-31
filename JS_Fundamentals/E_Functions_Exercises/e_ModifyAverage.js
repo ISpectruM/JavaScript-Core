@@ -14,4 +14,26 @@ function modifyAverage(num) {
     console.log(arr.join(""));
 }
 
+function modify(num) {
+    let numAsStr = num.toString();
+    let sum = sum(numAsStr);
+
+    while (sum / numAsStr.length <= 5){
+        numAsStr += '9';
+        sum = sum(numAsStr);
+    }
+
+    console.log(numAsStr);
+
+    function sum(numAsString) {
+        let sum = 0;
+
+        for (let num of numAsString) {
+            sum += Number(num);
+        }
+
+        return sum;
+    }
+}
+
 modifyAverage(5835);
