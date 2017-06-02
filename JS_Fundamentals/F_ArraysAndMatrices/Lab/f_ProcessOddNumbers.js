@@ -1,14 +1,10 @@
 function processOddNumbers(arr) {
-    let result = [];
-    for (let i = 0; i < arr.length; i++) {
-        let newElement = 0;
-        if (i % 2 !== 0){
-            newElement = arr[i]*2;
-            result.unshift(newElement);
-        }
-    }
+    let result = arr => arr.filter((e,i) => i%2 !==0 )
+        .map(e => e*2)
+        .reverse()
+        .join(" ");
 
-    console.log(result.join(" "));
+    console.log(result(arr));
 }
 
 processOddNumbers([3, 0, 10, 4, 7, 3]);
