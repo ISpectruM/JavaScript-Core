@@ -12,5 +12,7 @@ function sumLastKNumbers(count, nums) {
     console.log(result.join(" "));
 
 }
+//sum array
+// arr.reduce((a,b)=> a+b);
 
 sumLastKNumbers(8,2);
