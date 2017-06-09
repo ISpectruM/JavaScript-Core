@@ -1,7 +1,7 @@
 function checkDiagonals(matrix) {
     let firstDiagSum = 0;
     let secondaryDiagSum = 0;
-    matrix = matrix.map(str => str.split(' ').map(str => Number(str)));
+    matrix = matrix.map(str => str.split(' ').map(Number));
 
     matrix.forEach(
         (row,index) => {
@@ -10,14 +10,7 @@ function checkDiagonals(matrix) {
                     if(index === colIndex){
                         firstDiagSum += e;
                     }
-                })
-        });
-
-    matrix.forEach(
-        (row,index) => {
-            row.forEach(
-                (e,colIndex) => {
-                    if(index + colIndex === matrix.length-1){
+                    if (index + colIndex === matrix.length-1){
                         secondaryDiagSum += e;
                     }
                 })
