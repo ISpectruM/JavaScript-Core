@@ -15,6 +15,7 @@
 <script>
     function addItem() {
         let input = document.getElementById('newItemText');
+        if (input.value.length === 0) return;
         let text = input.value;
         let element = document.createElement('li');
         element.textContent = text;
