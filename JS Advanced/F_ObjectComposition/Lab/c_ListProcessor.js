@@ -1,6 +1,4 @@
 function solve(commands) {
-
-
     let process = (function () {
         let list = [];
 
