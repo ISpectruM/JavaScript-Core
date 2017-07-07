@@ -1,6 +1,6 @@
 function modifyWorker(worker) {
 
-    if (worker.handsShaking === true){
+    if (worker.handsShaking){
         let required = worker.weight * 0.1 * worker.experience;
         worker.bloodAlcoholLevel += required;
         worker.handsShaking = false;
