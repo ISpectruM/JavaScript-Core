@@ -4,12 +4,13 @@ function copyObj() {
         extend: function (template) {
 
             for (let prop in template) {
-                if (typeof template[prop] === 'function') {
+                let propValue = template[prop];
+                if (typeof propValue === 'function') {
                     let proto = Object.getPrototypeOf(this);
-                    proto[prop] = template[prop];
+                    proto[prop] = propValue;
 
                 } else {
-                    this[prop] = template[prop];
+                    this[prop] = propValue;
                 }
             }
         }
