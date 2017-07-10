@@ -13,6 +13,6 @@ function sumLastKNumbers(count, nums) {
 
 }
 //sum array
-// arr.reduce((a,b)=> a+b);
+// internalArray.reduce((a,b)=> a+b);
 
 sumLastKNumbers(8,2);
