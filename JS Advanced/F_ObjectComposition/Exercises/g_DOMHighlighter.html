@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            crossorigin="anonymous"></script>
+    <title>DOM Highlighter</title>
+    <style>
+        #wrapper {
+            width: 800px;
+            overflow: hidden;
+        }
+
+        #header {
+            font-size: 300%;
+            font-weight: bold;
+        }
+
+        #menu {
+            background-color: darkgrey;
+            padding: 0.5em;
+        }
+
+        #menu a {
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+
+        #content {
+            width: 500px;
+            float: left;
+        }
+
+        .article {
+            padding: 2em
+        }
+
+        .article .title {
+            font-size: 150%
+        }
+
+        #sidebar {
+            width: 250px;
+            float: right;
+            background-color: lightgray;
+        }
+
+        #footer {
+            text-align: center;
+            clear: both;
+            height: 5em;
+            background-color: darkgrey;
+        }
+
+        .highlight {
+            border: 1px solid red;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <ul>
+                <li><a><span>Decoy</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+\
+<div id="wrapper" class="expected">
+    <p class="expected">This should be highlighted</p>
+</div>
+<button onclick="traverseElements('#wrapper')">btn</button>
+<script>
+    function traverseElements(element) {
+
+        let lastElements = $('*:not(:has(*))');
+        let deeps = {};
+        let maxDepth = Number.NEGATIVE_INFINITY;
+
+        for (let el of lastElements) {
+            let depth = 0;
+
+            if ($(el).is(element)) {
+                maxDepth = depth;
+                deeps[depth] = el;
+                break;
+            }
+
+            let parent = el.parentNode;
+
+            while (parent) {
+                depth++;
+                if ($(parent).is(element)) {
+                    if (depth > maxDepth) {
+                        maxDepth = depth;
+                    } else if (depth === maxDepth) {
+                        break;
+                    }
+                    deeps[depth] = el;
+                    break;
+                }
+                parent = parent.parentNode;
+            }
+
+            if (Object.keys(deeps).length !== 0){
+                break;
+            }
+        }
+
+        let deepestEl = deeps[maxDepth];
+        $(deepestEl).addClass('highlight');
+        if (!$(deepestEl).is(element)) {
+            let parent = deepestEl.parentNode;
+            while (true) {
+                if ($(parent).is(element)) {
+                    $(parent).addClass('highlight');
+                    break;
+                }
+                $(parent).addClass('highlight');
+                parent = parent.parentNode;
+            }
+        }
+    }
+</script>
+</body>
+</html>
