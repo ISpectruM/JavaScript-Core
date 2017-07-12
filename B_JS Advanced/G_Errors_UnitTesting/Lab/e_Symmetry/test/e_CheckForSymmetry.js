@@ -1,6 +1,6 @@
 let isSymmetric = require('../e_Symmetry').isSymmetric;
-
 let expect = require('chai').expect;
+
 describe("Check symmetry", function () {
     it("Should return false when input is not array", function () {
         expect(isSymmetric(1)).to.equal(false);
