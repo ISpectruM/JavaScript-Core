@@ -6,13 +6,13 @@ class SortedList{
 
     add(element) {
         this.internalArray.push(element);
-        this.size++;
+        this._size++;
         this.internalArray.sort((a, b) => a-b);
     }
     remove(index){
         if (index >= 0 && index < this.internalArray.length){
             this.internalArray = this.internalArray.filter((e, i) => i !== index);
-            this.size--;
+            this._size--;
         }
     }
     get(index) {
