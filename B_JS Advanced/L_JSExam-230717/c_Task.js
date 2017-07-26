@@ -6,26 +6,22 @@ class Task {
     }
 
     static comparator(a,b){
-        if (a.isOverdue && b.isOverdue){
-            let aStatus = a.status;
-            let bStatus = b.status;
+        if (!a.isOverdue && !b.isOverdue){
 
-            if (aStatus === bStatus){
-                return a.deadline - b.deadline;
+            if(a.status === 'In Progress' && b.status !== 'In Progress') return -1;
+            if(a.status !== 'In Progress' && b.status === 'In Progress') return 1;
 
-            }else {
-                if (a === 'In Progress') return -1;
-                else if(b === 'In Progress') return 1;
+            if(a.status === 'Open' && b.status !== 'Open') return - 1;
+            if(a.status !== 'Open' && b.status === 'Open') return 1;
 
-                if(a === 'Open') return - 1;
-                else if(b === 'Open') return 1;
+            if(a.status === 'Complete' && b.status !== 'Complete') return -1;
+            if(a.status !== 'Complete' && b.status === 'Complete') return 1;
 
-                if(a === 'Complete') return -1;
-                else if (b === 'Complete') return 1;
-            }
+            return a.deadline - b.deadline;
         }
-        else if (a.isOverdue) return -1;
-        else return 1
+        else if (a.isOverdue && !b.isOverdue) return -1;
+        else if (b.isOverdue && !a.isOverdue) return 1;
+        else return a.deadline - b.deadline;
     }
 
     toString(){
