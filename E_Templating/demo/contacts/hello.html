@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Handlebars</title>
+    <script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script id="contact-template" type="text/x-handlebars-template">
+    <article>
+        <div class="title">{{name}} {{lastName}}
+            <button>&#8505;</button>
+        </div>
+        <div class="info">
+            <span>&phone; {{phone}}</span>
+            <span>&#9993; {{email}}</span>
+        </div>
+    </article>
+</script>
+
+<script id="list-template" type="text/x-handlebars-template">
+    <ul>
+        //Iterate over array
+        {{#each items}}
+        <li>{{name}} : {{price}}</li>
+        {{else}}
+        <li>No products today</li>
+        {{/each}}
+    </ul>
+    //Iterate over objects
+    <div>
+        {{#each items}}
+        <p>{{@key}} : {{this}}</p>
+        {{/each}}
+    </div>
+</script>
+
+<script id="weather-template" type="text/x-handlebars-template">
+    <div>
+        {{#if sunny}}
+        <p>The sky is clear</p>
+        {{else}}
+        <p>The sky is overcast</p>
+        {{/if}}
+    </div>
+</script>
+
+<script>
+    let container = document.getElementById('app');
+    let source  = document.getElementById('weather-template').innerHTML;
+    let template = Handlebars.compile(source);
+    container.innerHTML += template({sunny:false});
+    container.innerHTML += template({sunny:true});
+
+    /*
+    let source = document.getElementById('list-template').innerHTML;
+    let context = {
+        items:[
+            {name:"Tomatoes", price:"3.00"},
+            {name:"Potatoes", price:"0.90"},
+            {name:"Cucumbers", price:"2.50"},
+        ]
+    };
+    let template = Handlebars.compile(source);
+    container.innerHTML += template(context);
+    */
+
+    //    let source = document.getElementById('contact-template').innerHTML;
+    //    let context = [
+    //        {name: "Ivan", lastName: "Ivanov", phone: "080849584", email: "ilkj@kj.bg"},
+    //        {name: "Pencho", lastName: "Ivanov", phone: "646546", email: "pen@kj.bg"}
+    //    ];
+    //    let template = Handlebars.compile(source);
+    //        for (let contact of context) {
+    //            container.innerHTML += template(contact);
+    //        }
+</script>
+</body>
+</html>
