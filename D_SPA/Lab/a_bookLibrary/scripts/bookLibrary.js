@@ -239,7 +239,6 @@ function startApp(){
             "username":$('#formRegister').find("input[name='username']").val(),
             "password":$('#formRegister').find("input[name='passwd']").val()
         };
-        console.log(baseUrl + 'user/' + appId);
         $.ajax({
             url: baseUrl + 'user/' + appId + '/',
             method:"POST",
@@ -247,7 +246,15 @@ function startApp(){
             data: JSON.stringify(data),
             success:handleRegisterSuccess,
             error:handleError
-        })
+        });
+
+        function handleRegisterSuccess(userInfo) {
+            saveAuthInSession(userInfo);
+            showHideMenuLinks();
+            listBooks();
+            showInfo('User registration successful.');
+        }
+
     }
 
     function loginUser() {
@@ -292,12 +299,6 @@ function startApp(){
 
     }
 
-    function handleRegisterSuccess(userInfo) {
-        saveAuthInSession(userInfo);
-        showHideMenuLinks();
-        listBooks();
-        showInfo('User registration successful.');
-    }
 
     function saveAuthInSession(userInfo) {
         userAuth = userInfo._kmd.authtoken;
