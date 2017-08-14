@@ -1,0 +1,15 @@
+<tr>
+    <td>{{title}}</td>
+    <td>{{publisher}}</td>
+    <td>{{description}}</td>
+    <td>{{price}}</td>
+    <td>{{date}}</td>
+    <td>
+        {{#if isAuthor}}
+        <a href="#" data-id="{{json this}}" class="delete">[Delete]</a>
+        <a href="#" data-id="{{json this}}" class="edit">[Edit]</a>
+        {{else}}
+        <a href="#"></a>
+        {{/if}}
+    </td>
+</tr>

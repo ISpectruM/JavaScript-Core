@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prodavachnik</title>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/prodavachnik.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/prodavachnik.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+    <script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
+</head>
+
+<body>
+<header id="menu" class="menu">
+    <span id="menu-links"></span>
+    <span id="loggedInUser" class="menu-item"></span>
+    <div></div>
+</header>
+
+<main>
+    <span id="loadingBox" class="loadingBox">Loading ...</span>
+    <span id="infoBox" class="infoBox">Info</span>
+    <span id="errorBox" class="errorBox">Error</span>
+
+    <div id="content" class="content"></div>
+
+    <script>
+        startApp();
+    </script>
+</main>
+<footer>Prodavachnik - Simple SPA Application</footer>
+</body>
+</html>
