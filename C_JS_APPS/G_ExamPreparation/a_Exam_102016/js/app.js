@@ -78,7 +78,6 @@ $(() => {
                         obj.message = obj.text;
                     });
                     ctx.messages = data;
-                    console.log(ctx);
                     //Check if user is logged
                     ctx = checkLogStatus(ctx);
 
