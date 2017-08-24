@@ -66,16 +66,16 @@ let helper = (()=>{
         }
     }
 
+    function handleError(reason) {
+        showError(reason.responseJSON.description);
+    }
+
     function showInfo(message) {
         let infoBox = $('#infoBox');
         let span = infoBox.find('span');
         span.text(message);
         infoBox.show();
         setTimeout(() => infoBox.fadeOut(), 3000);
-    }
-
-    function handleError(reason) {
-        showError(reason.responseJSON.description);
     }
 
     function showError(message) {
