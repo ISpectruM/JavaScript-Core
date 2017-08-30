@@ -29,7 +29,6 @@ function registerComponents(arrStr) {
     });
 
     sortedSystem.forEach( s => {
-        let sk = s;
         console.log(s);
         let sortedComponents = [...system.get(s)].sort((a,b) =>
         b[1].length - a[1].length);
