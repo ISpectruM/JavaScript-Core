@@ -1,6 +1,5 @@
 function solve(rooms, couples) {
     let unaccommodated = 0;
-
     rooms = rooms.map(room => {
         if (room.type === 'double-bedded') {
             room.free = 2;
@@ -12,9 +11,7 @@ function solve(rooms, couples) {
         }
         return room;
     });
-
     for (let couple of couples) {
-
         let firstGender = couple.first.gender;
         let secondGender = couple.second.gender;
         let coupleGuests = [];
@@ -22,7 +19,6 @@ function solve(rooms, couples) {
         for (let guest in couple) {
             coupleGuests.push(couple[guest]);
         }
-
         for (let room of rooms) {
             if (firstGender !== secondGender) {
                 if (room.type === 'double-bedded' && room.free === 2) {
@@ -46,7 +42,6 @@ function solve(rooms, couples) {
                             room.free -= 1;
                             break;
                         }
-
                     } else if (room.free === 2 &&
                         room.gender === firstGender) {
                         if (coupleGuests.length === 2) {
@@ -73,9 +68,8 @@ function solve(rooms, couples) {
             unaccommodated += coupleGuests.length;
         }
     }
-
-    let sorted = rooms.sort((r1, r2) => r1.number.localeCompare(r2.number));
-    sorted.forEach(r => {
+    rooms.sort((r1, r2) => r1.number.localeCompare(r2.number))
+        .forEach(r => {
         console.log('Room number: ' + r.number);
         r.guests.sort((g1, g2) => g1.name.localeCompare(g2.name))
             .forEach(g => {
@@ -84,7 +78,6 @@ function solve(rooms, couples) {
             });
         console.log('Empty beds in the room: ' + r.free);
     });
-
     console.log('Guests moved to the tea house: ' + unaccommodated)
 }
 
